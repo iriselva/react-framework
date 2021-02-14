@@ -35,16 +35,6 @@
   align-items: center;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
 
 .title {
   margin: 0;
@@ -60,20 +50,12 @@
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  max-width: 600px;
 }
 
 .grid {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
@@ -95,8 +77,9 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  background-color: rgb(244, 250, 252);
+  border-color: lightblue;
+  cursor: pointer;
 }
 
 .card h3 {
@@ -113,6 +96,36 @@
 .logo {
   height: 1em;
 }
+
+.card img {
+  height: 200px;
+  width: 200px;
+  padding: 2rem;
+  margin: auto;
+  display: block;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-top: 1.5rem;
+}
+
+.textContainer {
+  position: relative;
+  max-height: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: max-height 200ms ease, height 200ms, opacity 50ms ease;
+}
+
+.textContainer.expanded {
+  max-height: 400px;
+  opacity: 1;
+  z-index: 1;
+}
+
 
 @media (max-width: 600px) {
   .grid {

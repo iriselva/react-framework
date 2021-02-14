@@ -1,53 +1,63 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { client } from '@utils/prismicPosts'
-import Post from '@components/Post'
 
-export default function Home() {
+import { client } from '../utils/prismicPosts'
+
+import Post from '../components/Post'
+
+export default function Home({ collaborativeProjects, personalProjects }) {
+  const renderPosts = posts => (
+    <div className={styles.grid}>
+      {posts !== undefined &&
+      posts.sort((post1, post2) => new Date(post2.date) - new Date(post1.date)).map((p) => {
+        console.log(p)
+        let title = p.title[0].text
+        let description = p.description[0].text
+        let key = `${p.date}+${title}`
+        return <Post 
+          key={key} 
+          date={p.date} 
+          image={p.image} 
+          title={title} 
+          description={description} 
+          live={p.live?.url}
+          git={p.git?.url}/>
+      })} 
+    </div>
+  );
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>My portfolio</title>
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;600&display=swap" rel="stylesheet"></link>
       </Head>
 
       <main className={styles.main}>
 
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          My mini portfolio!
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Hi! My name is Iris I am a web development student and here is a small overview of my projects.
         </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-        </div>
-
-        <div className="posts">
-          {posts !== undefined &&
-            posts.map((p) => {
-              let title = p.title[0].text
-              let key = `${p.date}+${title}`
-              return <Post key={key} date={p.date} image={p.image} title={title} />
-            })}
-        </div>
-
+      
+        <h2>Pet Projects</h2>
+       {renderPosts(personalProjects)}
+       <h2>Collaborative Projects</h2>
+       {renderPosts(collaborativeProjects)}
+        
       </main>
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://github.com/iriselva"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          My github{' '}
+
         </a>
       </footer>
     </div>
@@ -62,10 +72,25 @@ export async function getStaticProps() {
   const posts = res.results.map((p) => {
     return p.data
   })
+  const {personalProjects, collaborativeProjects} = posts.reduce(({personalProjects = [], collaborativeProjects = []}, post) => {
+      if (post.is_collaborative) {
+        collaborativeProjects.push(post);
+      } else {
+        personalProjects.push(post);
+      }
+      return {
+        collaborativeProjects,
+        personalProjects
+      }
+  }, {});
+
 
   return {
     props: {
-      posts,
+      collaborativeProjects,
+      personalProjects,
     },
   }
 }
+
+
