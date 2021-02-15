@@ -3,7 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Inconsolata', monospace;
-  color: #303030;
+  color: #404040;
+  background: rgb(248, 248, 245);
 }
 
 a {
@@ -20,21 +21,48 @@ button {
   width: auto;
   padding: 0.5rem;
   background: white;
-  border: 1px solid lightgray;
+  border: 1px solid #eaeaea;
   border-radius: 0.5rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 button:hover {
-  background: lightblue;
+  background: rgb(144, 204, 224);
   border: none;
   cursor: pointer;
-  box-shadow: 1px 1px 8px lightgray;
+  box-shadow: 1px 1px 8px #eaeaea;
 }
 
 h2 {
   padding-top: 2rem;
-  text-decoration: underline;
+  color: #404040;
+  font-size: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 6rem;
+  justify-content: center;
+  padding: 0;
+}
+
+li a {
+  font-size: 1.5rem;
+  text-transform: uppercase;
   color: lightblue;
+}
+
+li a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(144, 204, 224);
+}
+
+hr {
+  border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }

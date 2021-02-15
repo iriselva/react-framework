@@ -35,7 +35,6 @@
   align-items: center;
 }
 
-
 .title {
   margin: 0;
   line-height: 1.15;
@@ -51,6 +50,8 @@
   line-height: 1.5;
   font-size: 1.5rem;
   max-width: 600px;
+  margin: auto;
+  padding-top: 4rem;
 }
 
 .grid {
@@ -72,6 +73,7 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
+  max-width: 800px;
 }
 
 .card:hover,
@@ -126,6 +128,16 @@
   z-index: 1;
 }
 
+.arrow {
+  font-size: 2.5rem;
+  color: lightblue;
+}
+
+.open {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 @media (max-width: 600px) {
   .grid {
