@@ -4,7 +4,7 @@ import Post from "../components/Post";
 import { Fragment } from "react";
 
 /* Home page projects content */
-export default function Home({ collaborativeProjects, personalProjects }) {
+export default function Collab({ collaborativeProjects }) {
   const renderPosts = (posts) => (
     <div className={styles.grid}>
       {/* sorting posts by date */}
@@ -33,7 +33,7 @@ export default function Home({ collaborativeProjects, personalProjects }) {
   return (
     <Fragment>
       {/* Rendering projects if collab or personal */}
-      {renderPosts(personalProjects)}
+      {renderPosts(collaborativeProjects)}
     </Fragment>
   );
 }
