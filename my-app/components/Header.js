@@ -4,10 +4,10 @@ import ActiveLink from "./ActiveLink";
 function Header() {
   return (
     <div>
-      <h1 className={styles.title}>WebDev portfolio</h1>
+      <h1 className={styles.title}>Íris Elva Ólafsdóttir</h1>
       <p className={styles.description}>
-        Hi! My name is Iris, I am a web development student and welcome to my
-        mini portfolio
+        Hi, I am newly graduated from web development at the Techical Academy and and welcome to my
+        mini portfolio!
       </p>
       <div>
         {/* navigation */}
